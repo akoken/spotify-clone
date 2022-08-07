@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div className="bg-black h-screen overflow-hidden">
       <Head>
-        <title>Spotifier</title>
+        <title>Spotify 2.0</title>
         <meta name="description" content="Spotify 2.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
