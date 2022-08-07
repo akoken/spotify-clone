@@ -7,8 +7,7 @@ import Player from "../components/Player";
 
 export default function Home() {
 
-  const { data: session, status} = useSession();
-  console.log(session);
+  const { data: session } = useSession();
 
   if(!session) return <Login/>;
 
