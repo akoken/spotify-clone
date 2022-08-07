@@ -23,8 +23,8 @@ async function refreshAccessToken(token) {
 
         return {
             ...token,
-            error: 'Error refreshing access token'
-        }
+            error: 'RefreshAccessTokenError',
+        };
 
     }
 }
@@ -40,9 +40,6 @@ export default NextAuth({
     // ...add more providers here
   ],
   secret: process.env.JWT_SECRET,
-  pages: {
-    signIn: '/login'
-  },
   callbacks: {
     async jwt({token, account, user}) {
 
