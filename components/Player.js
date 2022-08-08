@@ -53,6 +53,16 @@ function Player() {
     });
   };
 
+  const handleShuffle = () => {
+    spotifyApi.getMyCurrentPlaybackState().then((data) => {
+      if (data.body?.shuffle_state) {
+        spotifyApi.setShuffle(false);
+      } else {
+        spotifyApi.setShuffle(true);
+      }
+    });
+  }
+
   useEffect(() => {
     if (spotifyApi.getAccessToken() && !currentTrackId) {
       fetchCurrentSong();
@@ -90,7 +100,8 @@ function Player() {
 
       {/* Center */}
       <div className="flex items-center justify-evenly">
-        <SwitchHorizontalIcon className="button" />
+        <SwitchHorizontalIcon className="button"
+          onClick={handleShuffle} />
         <RewindIcon
           className="button"
           onClick={() => spotifyApi.skipToPrevious()}
