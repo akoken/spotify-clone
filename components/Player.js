@@ -1,7 +1,8 @@
 import { useSession } from "next-auth/react";
 import useSpotify from "../hooks/useSpotify";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { currentTrackIdState, isPlayingState } from "../atoms/songAtom";
+import { shuffleState } from "../atoms/playbackAtom";
 import useSongInfo from "../hooks/useSongInfo";
 import { useState, useEffect, useCallback } from "react";
 import {
@@ -22,9 +23,9 @@ import { debounce } from "lodash";
 function Player() {
   const spotifyApi = useSpotify();
   const { data: session } = useSession();
-  const [currentTrackId, setCurrentIdTrack] =
-    useRecoilState(currentTrackIdState);
+  const [currentTrackId, setCurrentIdTrack] = useRecoilState(currentTrackIdState);
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
+  const [shuffled, setShuffle] = useRecoilState(shuffleState);
   const [volume, setVolume] = useState(50);
 
   const songInfo = useSongInfo();
@@ -57,8 +58,10 @@ function Player() {
     spotifyApi.getMyCurrentPlaybackState().then((data) => {
       if (data.body?.shuffle_state) {
         spotifyApi.setShuffle(false);
+        setShuffle(false);
       } else {
         spotifyApi.setShuffle(true);
+        setShuffle(true);
       }
     });
   }
@@ -100,7 +103,7 @@ function Player() {
 
       {/* Center */}
       <div className="flex items-center justify-evenly">
-        <SwitchHorizontalIcon className="button"
+        <SwitchHorizontalIcon className={`button ${shuffled ? 'text-green-500' : 'text-white'}`}
           onClick={handleShuffle} />
         <RewindIcon
           className="button"

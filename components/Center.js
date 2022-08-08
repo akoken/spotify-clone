@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { shuffle } from "lodash";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { playlistIdState, playlistState } from "../atoms/playlistAtom";
+import { shuffleState } from "../atoms/playbackAtom";
 import useSpotify from "../hooks/useSpotify";
 import Songs from "./Songs";
 
@@ -23,6 +24,7 @@ function Center() {
     const [color, setColor] = useState(null);
     const playlistId = useRecoilValue(playlistIdState);
     const [playlist, setPlaylist] = useRecoilState(playlistState);
+    const [shuffled, setShuffle] = useRecoilState(shuffleState);
 
     useEffect(() => {
         setColor(shuffle(colors).pop());
@@ -33,6 +35,16 @@ function Center() {
             setPlaylist(data.body);
         }).catch(err => console.log("Error getting playlist", err));
     }, [spotifyApi, playlistId]);
+
+    useEffect(() => {
+        spotifyApi.getMyCurrentPlaybackState().then((data) => {
+            if (data.body?.shuffle_state) {
+              setShuffle(true);
+            } else {
+              setShuffle(false);
+            }
+          });
+    }, [session, spotifyApi]);
 
     return(
         <div className="flex-grow h-screen overflow-y-scroll scrollbar-hide">
