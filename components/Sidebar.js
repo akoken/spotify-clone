@@ -50,12 +50,12 @@ function Sidebar() {
                 <p>Create Playlist</p>
             </button>
             <button className="flex items-center space-x-2 hover:text-white">
-                <HeartIcon className="h-5 w-5 text-red-500"/>
-                <p>Liked songs</p>
+                <HeartIcon className="h-5 w-5 text-blue-500"/>
+                <p>Liked Songs</p>
             </button>
             <button className="flex items-center space-x-2 hover:text-white">
                 <RssIcon className="h-5 w-5 text-orange-500"/>
-                <p>Your episodes</p>
+                <p>Your Episodes</p>
             </button>
             <hr className="border-t-[0.1px] border-gray-900"/>
 
