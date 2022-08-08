@@ -4,16 +4,14 @@ This repository contains the source code of Spotify clone app created for educat
 
 First, you have to create an `.env.local` file in the root of the project and set the following environment variables. You can acquire Client ID and Client Secret from [Spotify for Developers](https://developer.spotify.com/dashboard/) by creating a new application in your dashboard.
 
-> **Note**: You also need to set `Redirect URIs` to `http://localhost:3000/api/auth/callback` in your application settings.
-
-
-
 ```bash
 NEXTAUTH_URL=http://localhost:3000
 NEXT_PUBLIC_CLIENT_ID=<your spotify client-id>
 NEXT_PUBLIC_CLIENT_SECRET=<your spotify client-secret>
 JWT_SECRET=HowDoYouTurnThisOn
 ```
+> **Note**: You also need to set `Redirect URIs` to `http://localhost:3000/api/auth/callback` in your application settings.
+
 
 Then, you can run the following command to start the server:
 
