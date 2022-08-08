@@ -93,7 +93,7 @@ function Player() {
         <SwitchHorizontalIcon className="button" />
         <RewindIcon
           className="button"
-          onClick={() => spotifyApi.skipToPrevious()}
+          // onClick={() => spotifyApi.skipToPrevious()}
         />
 
         {isPlaying ? (
