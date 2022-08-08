@@ -1,3 +1,5 @@
+# Spotify v2.0
+
 This repository contains the source code of Spotify clone app created for educational purposes.
 
 ## How to run locally?
