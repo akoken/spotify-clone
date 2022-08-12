@@ -6,6 +6,13 @@ export async function middleware(req) {
     const token = await getToken({ req, secret: process.env.JWT_SECRET });
     const { pathname } = req.nextUrl;
 
+    if (
+        pathname.startsWith('/_next/') ||
+        pathname.includes('.') // static files
+    ) {
+        return
+    }
+
     if (pathname.includes("/api/auth") || token) {
         return NextResponse.next();
       }
