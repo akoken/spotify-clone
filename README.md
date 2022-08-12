@@ -12,7 +12,7 @@ NEXT_PUBLIC_CLIENT_ID=<your spotify client-id>
 NEXT_PUBLIC_CLIENT_SECRET=<your spotify client-secret>
 JWT_SECRET=HowDoYouTurnThisOn
 ```
-> **Note**: You also need to set `Redirect URIs` to `http://localhost:3000/api/auth/callback` in your application settings.
+> **Note**: You also need to set `Redirect URIs` to `http://localhost:3000/api/auth/callback/spotify` in your application settings.
 
 
 Then, you can run the following command to start the server:
