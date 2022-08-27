@@ -1,4 +1,4 @@
-# Spotify v2.0
+# Spotify 2.0
 
 This repository contains the source code of Spotify clone app created for educational purposes.
 
